@@ -1,0 +1,72 @@
+.App {
+  text-align: center;
+  // background: radial-gradient(hsl(214, 47%, 23%) , hsl(237, 49%, 15%));
+}
+
+body {
+  background: radial-gradient(hsl(214, 47%, 23%) , hsl(237, 49%, 15%)) no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.scoreboard {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 30px auto;
+  border: 3px hsl(217, 16%, 45%) solid;
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 350px;
+
+  h1 {
+    
+    width:  20px;
+    line-height: .8;
+    font-size: 23px;
+    padding-left: 10px;
+
+  }
+
+  .score {
+    background-color: white;
+    color: hsl(229, 64%, 46%);
+    padding: 5px;
+    line-height: .5;
+    width: 90px;
+    border-radius: 6px;
+
+     p { 
+      font-size: 14px;
+
+     }
+    .score-count {
+      color: hsl(229, 25%, 31%);
+      font-weight: bold;
+      font-size: 47px;
+      line-height: 0;
+      padding-left: 5px;
+      margin-top: 25px;
+      letter-spacing: 0-2px;
+      width: 80px;
+      margin-bottom: 32px;
+    }
+    
+  }
+}
+
+.rules-btn {
+  margin: auto;
+  line-height: .5;
+  width: 119px;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid hsl(217, 16%, 45%);
+  :hover {
+    cursor: pointer;
+  }
+}
+
+
