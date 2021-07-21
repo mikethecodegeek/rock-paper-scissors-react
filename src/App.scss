@@ -58,7 +58,7 @@ body {
 }
 
 .rules-btn {
-  margin: auto;
+  margin: 0px auto 20px;
   line-height: .5;
   width: 119px;
   color: white;
@@ -67,6 +67,45 @@ body {
   :hover {
     cursor: pointer;
   }
+}
+
+.game-board {
+  background: url('./images/bg-triangle.svg') center no-repeat;
+  height: auto;
+  position: relative;
+  margin: 10px auto 30px;
+  width: 300px;
+  .game-piece {
+    background: white;
+    border-radius:115px;
+    height:115px;
+    width:115px;
+    display: grid;
+    place-content: center;
+    top:20px;
+    left:20px;
+  }
+
+
+}
+
+#rock,#paper,#scissors {
+  position: relative;
+}
+
+#rock {
+  left: 65px;
+  top: -84px;
+}
+
+#paper {
+  top: 23px;
+  left: -55px;
+}
+
+#scissors {
+  top: -119px;
+  left: 194px;
 }
 
 
