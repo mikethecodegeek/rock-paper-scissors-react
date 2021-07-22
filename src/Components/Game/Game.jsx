@@ -1,11 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 
 import Gamepiece from './Gamepiece'
 
 export default function Game() {
     const [playing,setPlaying] = useState(false);
     const [result, setResult] = useState(null);
-    const [compMove, setCompMove] = useState(null);
+    const [compMove, setCompMove] = useState("");
+    const [player, setPlayer] = useState("");
+    const [test,setTest] = useState(3);
+    
+
 
     const score = {
         rock: {
@@ -39,40 +43,53 @@ export default function Game() {
             color: "linear-gradient(hsl(230, 89%, 62%),hsl(230, 89%, 65%))"
         }
     }
-    const rock=pieces["rock"]
+   
 
 
     const playGame = choice => {
-        // setPlaying(true)
+        setPlaying(true)
         const compChoices = [];
         for (let a in score[choice]) {
             compChoices.push(a)
         };
-        const compMove = Math.floor(Math.random() * 2);
-        setCompMove(compMove);
+        const compMove1 = compChoices[Math.floor(Math.random() * 2)];
+        setPlayer(choice);
+        setCompMove(compMove1);
+        let p = player;
+        let c = compMove;
+        setResult(score[choice][compMove1]);
+        let s = result;
+        // debugger;
+        
         
     }
 
     return (
         <div className="game-board">
-            {!playing &&
+            {player == "" &&
             <div className="pre-game">
-                <Gamepiece clickMe={()=>playGame("paper")} id="paper" image='./icon-paper.svg' color="linear-gradient(hsl(230, 89%, 62%),hsl(230, 89%, 65%))"/>
-                <Gamepiece clickMe={()=>playGame("scissors")} id="scissors" image='./icon-scissors.svg' color="linear-gradient(hsl(39, 89%, 49%),hsl(40, 84%, 53%)"/>
-                <Gamepiece clickMe={()=>playGame("rock")} id={rock.id} image={rock.image} color={rock.color}/>
+                <Gamepiece clickMe={()=>playGame("paper")} id={pieces["paper"].id} image={pieces["paper"].image} color={pieces["paper"].color}/>
+                <Gamepiece clickMe={()=>playGame("scissors")} id={pieces["scissors"].id} image={pieces["scissors"].image} color={pieces["scissors"].color}/>
+                <Gamepiece clickMe={()=>playGame("rock")} id={pieces["rock"].id} image={pieces["rock"].image} color={pieces["rock"].color}/>
+               
             </div>
             }
-            {playing &&
+            
+            {player !== ""  &&
             <div className="game">
+                <p style={{color:"white",fontSize:"40px"}}>{result}</p>
                 <div className="player">
-                    <Gamepiece id="paper" image='./icon-paper.svg' color="linear-gradient(hsl(230, 89%, 62%),hsl(230, 89%, 65%))"/>
+                    {/* <p>{pieces[player].id}</p> */}
+                    <Gamepiece clickMe={()=> null} id={pieces[player].id} image={pieces[player].image} color={pieces[player].color}/>
                 </div>
                     
                 <div className="computer">
-                    <Gamepiece id="scissors" image='./icon-scissors.svg' color="linear-gradient(hsl(39, 89%, 49%),hsl(40, 84%, 53%)"/>
+                    
+                    <Gamepiece clickMe={()=>null} id={pieces[compMove].id} image={pieces[compMove].image} color={pieces[compMove].color}/>
                 </div>
             </div>
             }
+            {/* } */}
         </div>
     )
 }
