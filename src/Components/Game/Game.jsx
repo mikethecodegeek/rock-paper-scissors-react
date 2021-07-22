@@ -9,7 +9,12 @@ export default function Game() {
     const [player, setPlayer] = useState("");
     const [currentScore,setCurrentScore] = useState(0);
     
-
+    const reset = () => {
+        setPlaying(false);
+        setResult(null);
+        setCompMove("");
+        setPlayer("")
+    }
 
     const score = {
         rock: {
@@ -86,7 +91,10 @@ export default function Game() {
                     {/* <p>{pieces[player].id}</p> */}
                     <Gamepiece clickMe={()=> null} id={pieces[player].id} image={pieces[player].image} color={pieces[player].color}/>
                 </div>
-                <p style={{color:"white",fontSize:"40px"}}>{result}</p>
+                <div>
+                    <p style={{color:"white",fontSize:"40px"}}>{result}</p>
+                    <button onClick={()=>reset()}>PLAY AGAIN</button>
+                </div>
                     
                 <div className="computer">
                     
