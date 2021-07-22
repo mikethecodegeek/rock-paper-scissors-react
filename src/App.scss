@@ -1,5 +1,8 @@
+
+
 .App {
   text-align: center;
+  
   // background: radial-gradient(hsl(214, 47%, 23%) , hsl(237, 49%, 15%));
 }
 
@@ -19,7 +22,7 @@ body {
   border: 3px hsl(217, 16%, 45%) solid;
   border-radius: 10px;
   padding: 10px;
-  max-width: 350px;
+  max-width: 650px;
 
   h1 {
     
@@ -64,10 +67,12 @@ body {
   color: white;
   border-radius: 10px;
   border: 2px solid hsl(217, 16%, 45%);
+  
   :hover {
     cursor: pointer;
   }
 }
+
 
 .game-board {
   background: url('./images/bg-triangle.svg') center no-repeat;
@@ -77,9 +82,9 @@ body {
   width: 300px;
   .game-piece {
     background: white;
-    border-radius:115px;
-    height:115px;
-    width:115px;
+    border-radius:105px;
+    height:105px;
+    width:105px;
     display: grid;
     place-content: center;
     top:20px;
@@ -108,4 +113,23 @@ body {
   left: 194px;
 }
 
+@media (min-width: 500px) {
+
+  #rules.rules-btn {
+    position: absolute;
+    right: 20px;
+  }
+
+  .game-piece {
+    border-radius:115px;
+    height:115px;
+    width:115px;
+  }
+
+  .game {
+    max-width: 650px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
 
