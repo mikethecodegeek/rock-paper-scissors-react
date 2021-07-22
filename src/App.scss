@@ -75,11 +75,12 @@ body {
 
 
 .game-board {
-  background: url('./images/bg-triangle.svg') center no-repeat;
+  // background: url('./images/bg-triangle.svg') center no-repeat;
   height: auto;
   position: relative;
   margin: 10px auto 30px;
   width: 300px;
+ 
   .game-piece {
     background: white;
     border-radius:105px;
@@ -93,24 +94,26 @@ body {
 
 
 }
-
-#rock,#paper,#scissors {
-  position: relative;
-}
-
-#rock {
-  left: 75px;
-    top: -49px;
-}
-
-#paper {
-  top: 23px;
-  left: -55px;
-}
-
-#scissors {
-  top: -119px;
-  left: 194px;
+.pre-game {
+  background: url('./images/bg-triangle.svg') center no-repeat;
+  #rock,#paper,#scissors {
+    position: relative;
+  }
+  
+  #rock {
+    left: 75px;
+      top: -49px;
+  }
+  
+  #paper {
+    top: 23px;
+    left: -55px;
+  }
+  
+  #scissors {
+    top: -119px;
+    left: 194px;
+  }
 }
 
 @media (min-width: 500px) {
@@ -127,7 +130,7 @@ body {
   }
 
   .game {
-    max-width: 650px;
+    width: 650px;
     display: flex;
     justify-content: space-between;
   }

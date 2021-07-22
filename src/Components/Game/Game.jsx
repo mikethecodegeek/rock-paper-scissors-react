@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-
+import Scoreboard from '../Scoreboard/Scoreboard'
 import Gamepiece from './Gamepiece'
 
 export default function Game() {
@@ -7,7 +7,7 @@ export default function Game() {
     const [result, setResult] = useState(null);
     const [compMove, setCompMove] = useState("");
     const [player, setPlayer] = useState("");
-    const [test,setTest] = useState(3);
+    const [currentScore,setCurrentScore] = useState(0);
     
 
 
@@ -59,12 +59,17 @@ export default function Game() {
         let c = compMove;
         setResult(score[choice][compMove1]);
         let s = result;
+        if (score[choice][compMove1] == "win") {
+            setCurrentScore(currentScore+1);
+        }
         // debugger;
         
         
     }
 
     return (
+        <>
+        <Scoreboard currentScore={currentScore} />
         <div className="game-board">
             {player == "" &&
             <div className="pre-game">
@@ -77,11 +82,11 @@ export default function Game() {
             
             {player !== ""  &&
             <div className="game">
-                <p style={{color:"white",fontSize:"40px"}}>{result}</p>
                 <div className="player">
                     {/* <p>{pieces[player].id}</p> */}
                     <Gamepiece clickMe={()=> null} id={pieces[player].id} image={pieces[player].image} color={pieces[player].color}/>
                 </div>
+                <p style={{color:"white",fontSize:"40px"}}>{result}</p>
                     
                 <div className="computer">
                     
@@ -91,5 +96,6 @@ export default function Game() {
             }
             {/* } */}
         </div>
+        </>
     )
 }
