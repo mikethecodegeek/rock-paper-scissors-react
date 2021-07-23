@@ -1,6 +1,8 @@
 import React,{useState, useEffect} from 'react'
 import Scoreboard from '../Scoreboard/Scoreboard'
 import Gamepiece from './Gamepiece'
+import Modal from '../Modal/Modal'
+import Rulesbtn from '../Rules/Rulesbtn'
 
 export default function Game() {
     const [playing,setPlaying] = useState(false);
@@ -8,7 +10,8 @@ export default function Game() {
     const [compMove, setCompMove] = useState("");
     const [player, setPlayer] = useState("");
     const [currentScore,setCurrentScore] = useState(0);
-    
+    const [modalActive, setModalActive] = useState(false);
+
     const reset = () => {
         setPlaying(false);
         setResult(null);
@@ -50,6 +53,9 @@ export default function Game() {
     }
    
 
+    const toggleModal = () => {
+        modalActive == true ? setModalActive(false) : setModalActive(true);
+    }
 
     const playGame = choice => {
         setPlaying(true)
@@ -74,6 +80,9 @@ export default function Game() {
 
     return (
         <>
+        {modalActive &&
+        <Modal toggleModal={()=>toggleModal()} />
+        }
         <Scoreboard currentScore={currentScore} />
         <div className="game-board">
             {player == "" &&
@@ -89,6 +98,7 @@ export default function Game() {
             <div className="game">
                 <div className="player">
                     {/* <p>{pieces[player].id}</p> */}
+                    <p>YOU PICKED</p>
                     <Gamepiece clickMe={()=> null} id={pieces[player].id} image={pieces[player].image} color={pieces[player].color}/>
                 </div>
                 <div>
@@ -97,11 +107,13 @@ export default function Game() {
                 </div>
                     
                 <div className="computer">
-                    
+                    <p>THE HOUSE PICKED</p>
                     <Gamepiece clickMe={()=>null} id={pieces[compMove].id} image={pieces[compMove].image} color={pieces[compMove].color}/>
                 </div>
             </div>
             }
+
+            <Rulesbtn toggleModal={()=>toggleModal()} />
             {/* } */}
         </div>
         </>

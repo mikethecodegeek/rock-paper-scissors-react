@@ -116,11 +116,50 @@ body {
   }
 }
 
+.computer >p,.player >p {
+  color: white;
+}
+
+.overlay {
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-content: center;
+
+  .card {
+    background-color: white;
+    border-radius: 10px;
+    height: 400px;
+    width: 300px;
+    padding: 10px 40px;
+    img {
+      margin: 20px 0px;
+    }
+    .upper > p {
+      font-size: 20px;
+    }
+
+    .upper > p:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.upper {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (min-width: 500px) {
 
   #rules.rules-btn {
     position: absolute;
     right: 20px;
+  }
+
+  .scoreboard {
+    max-width: 485px;
   }
 
   .game-piece {
@@ -130,6 +169,7 @@ body {
   }
 
   .game {
+    margin-left: -175px;
     width: 650px;
     display: flex;
     justify-content: space-between;
